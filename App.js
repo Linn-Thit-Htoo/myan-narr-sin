@@ -11,6 +11,7 @@ import GetStartedScreen from './screens/GetStartedScreen';
 import BookmarkScreen from './screens/BookmarkSceen';
 import CategoryScreen from './screens/CategoryScreen';
 import ProfileScreen from './screens/ProfileScreen';
+import LoginScreen from './screens/Auth/LoginScreen';
 function BottomNavigationBar() {
   const route = useRoute();
   const Tab=createBottomTabNavigator();
@@ -37,12 +38,11 @@ function BottomNavigationBar() {
           }
           const iconComponent = iconName === "book-outline" ? (
             <Ionicons name="library-outline" size={28} color={theme.colors.primary} />
+          ) : iconName === "book" ? (
+            <Ionicons name="library" size={28} color={theme.colors.primary} />
           ) : (
-            <Ionicons name="library" size={28} theme={theme.colors.primary} />
-          )
-          : (
             <MaterialCommunityIcons name={iconName} size={28} color={theme.colors.primary} />
-          );
+          );          
           return (
             <>
               {iconComponent}
@@ -77,6 +77,7 @@ export default function App() {
       <Stack.Navigator initialRouteName='getstarted' screenOptions={{ headerShown: false }}>
         <Stack.Screen name="bottomnavigationbar" component={BottomNavigationBar}/>
         <Stack.Screen name="getstarted" component={GetStartedScreen} />
+        <Stack.Screen name="/login" component={LoginScreen} />
       </Stack.Navigator>
     </NavigationContainer>
    </>
